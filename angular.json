@@ -18,6 +18,10 @@
       "prefix": "app",
       "architect": {
         "build": {
+          "styles": [
+            "node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "styles.scss"
+          ],
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/frontend",
