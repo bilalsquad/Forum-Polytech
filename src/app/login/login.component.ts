@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {MessageService} from "../message/message.service";
 
 @Component({
   selector: 'app-login',
@@ -7,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  errorMessage! : string ;
+  alertevide : boolean = true  ;
+  message : any ;
 
-  constructor(errorMessage: string) { }
+  constructor(htpp : HttpClient, messageservice : MessageService) {
+
+    this.message = messageservice ;
+
+  }
 
   ngOnInit(): void {
+
   }
 
   public afficheInfo(){
@@ -21,8 +31,22 @@ export class LoginComponent implements OnInit {
 
 
 
+    if ( prenom == "" || mdp =="")
+    {
+        this.errorMessage = "vous devez saisir un login et un password non vides"
+        this.alertevide = false ;
+        console.log("viiiide")
 
-    console.log("Le prenom est " + prenom + " et le mdp est " + mdp ) ;
+
+    }
+    else {
+      this.alertevide = true ;
+      console.log("Le prenom est " + prenom + " et le mdp est " + mdp);
+    }
+
+    this.message.sendMessage("CheckLogin", "");
+
+
   }
 
 }

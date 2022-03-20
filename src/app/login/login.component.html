@@ -1,5 +1,6 @@
 <br>
 <h2>Veuillez vous authentifiez </h2>
+
 <table>
   <tr>
     <td>Entrez votre nom</td>
@@ -17,3 +18,7 @@
     <td><input type="submit" (click)="afficheInfo()" value="Se Connecter"></td>
   </tr>
 </table>
+
+<div class="alert alert-primary" role="alert" [hidden]='alertevide'>
+  {{errorMessage}}
+</div>
